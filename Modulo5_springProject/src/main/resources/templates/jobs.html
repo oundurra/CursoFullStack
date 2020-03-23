@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  	<title>Curso FullStack: Ejemplo Spring-Thymeleaf-Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="/css/globalstyle.css" rel="stylesheet" th:href="@{/css/globalstyle.css}"/>
+ 	<script src="/js/jobs.js" th:href="@{/js/jobs.js}"></script>
+  </head>
+
+<body>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="container">
+       <div class="panel panel-default" id="panel1">
+    		<div class="panel-body">
+    			<h3>Mantención de trabajos</h3>
+    			<p>
+    			<div class="btn-group">
+                	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('listJob')">Listar</button>
+                	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('getJob')">Buscar</button>
+            		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('insertJob')">Nuevo</button>
+            		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('updateJob')">Grabar</button>
+            		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('deleteJob')">Eliminar</button>
+             	</div>
+    			<p>
+    			<div class="alert alert-danger" id="msg" hidden="true">
+  				</div>
+       			<div class="input-group">
+   					<span class="input-group-addon">Job ID</span>
+   					<input id="job_id" type="text" class="form-control" name="job_id">
+ 				</div>
+ 				<p>
+ 				<div class="input-group">
+   					<span class="input-group-addon">Job Title</span>
+   					<input id="job_title" type="text" class="form-control" name="job_title">
+ 				</div>
+  					<div class="input-group">
+    				<span class="input-group-addon">Min Salary</span>
+    				<input id="min_salary" type="text" class="form-control" name="min_salary">
+  				</div>
+     			<div class="input-group">
+   					<span class="input-group-addon">Max Salary</span>
+   					<input id="max_salary" type="text" class="form-control" name="max_salary">
+ 				</div>
+ 			</div>
+		</div>
+    </div>
+    
+    <!-- Modal -->
+	<div id="myModal" class="modal modal-sm" role="dialog">
+  		<div class="modal-dialog">
+    	<!-- Modal content-->
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+        			<h4 class="modal-title">Job List</h4>
+      		</div>
+      		<div class="modal-body" id="modalTable">
+      			<div class="table-responsive">
+		        		<p>Some text in the modal.</p>
+		        </div>
+	      	</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    	</div>
+		</div>
+	</div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+</body>
+
+</html>
