@@ -26,20 +26,21 @@ public class EmployeesController {
 	
 	@RequestMapping(value="/list")
 	public @ResponseBody List<EmployeesDTO> ajaxList(HttpServletRequest req, HttpServletResponse res) {
-		List<EmployeesDTO> list = employeesService.list();
+		List<EmployeesDTO> list = employeesService.findAll();
 		return list;
 	}
 	
 	@RequestMapping(value="/get")
 	public @ResponseBody EmployeesDTO ajaxGet(HttpServletRequest req, HttpServletResponse res) {
-		EmployeesDTO job = employeesService.get(req.getParameter("employee_id"));
-		return job;
+		EmployeesDTO employee = employeesService.getOne(Integer.parseInt(req.getParameter("employee_id")));
+		return employee;
 	}
 	
 	@RequestMapping(value="/delete")
 	public @ResponseBody int ajaxDelete(HttpServletRequest req, HttpServletResponse res) {
-		int rows = employeesService.delete(req.getParameter("employee_id"));
-		return rows;
+		EmployeesDTO employee = employeesService.getOne(Integer.parseInt(req.getParameter("employee_id")));
+		employeesService.delete(employee);
+		return 0;
 	}
 	
 	@RequestMapping(value="/insert")
@@ -49,7 +50,10 @@ public class EmployeesController {
 			String requestData = req.getReader().lines().collect(Collectors.joining());
 		    Gson gson=  new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			EmployeesDTO employee = gson.fromJson(requestData, EmployeesDTO.class);
-			rows = employeesService.insert(employee);
+			employee = employeesService.save(employee);
+			if (employee == null) {
+				rows=0;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -66,7 +70,10 @@ public class EmployeesController {
 			System.out.println(requestData);
 		    Gson gson=  new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			EmployeesDTO employee = gson.fromJson(requestData, EmployeesDTO.class);
-			rows = employeesService.update(employee);
+			employee = employeesService.save(employee);
+			if (employee == null) {
+				rows=0;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

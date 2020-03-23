@@ -1,9 +1,23 @@
 package cl.icap.cursofullstack.model.dto;
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.persistence.Id;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+@Entity
+@Table(name="Employees")
+@EntityListeners(AuditingEntityListener.class)
 public class EmployeesDTO {
+	@Id
 	private Integer employee_id;
+	@Size(min=3,max=30)
 	private String first_name;
+	@Size(min=3,max=30)
 	private String last_name;
 	private String email;
 	private String phone_number;
