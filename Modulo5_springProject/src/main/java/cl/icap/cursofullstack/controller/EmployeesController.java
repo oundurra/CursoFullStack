@@ -67,12 +67,11 @@ public class EmployeesController {
 		try {
 			String requestData = req.getReader().lines().collect(Collectors.joining());
 			
-			System.out.println(requestData);
 		    Gson gson=  new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 			EmployeesDTO employee = gson.fromJson(requestData, EmployeesDTO.class);
 			employee = employeesService.save(employee);
-			if (employee == null) {
-				rows=0;
+			if (employee != null) {
+				rows=1;
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

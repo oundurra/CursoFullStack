@@ -1,7 +1,23 @@
 package cl.icap.cursofullstack.model.dto;
 
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@Entity
+@Table(name="Jobs")
+@EntityListeners(AuditingEntityListener.class)
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class JobsDTO {
+	@Id
 	private String job_id;
+	@Size(min=3,max=35)
 	private String job_title;
 	private int min_salary;
 	private int max_salary;

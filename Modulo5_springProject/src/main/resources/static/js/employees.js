@@ -10,7 +10,6 @@ function EmployeesController(opcion) {
 			success : function(res) {
 				$('#employeesTable').bootstrapTable('load', res);
 				$('#employeesTable tbody').on('click', 'tr', function () {
-					alert("100");
 					$("#employee_id").val($(this).find("td:eq(0)").text());
 					$("#first_name").val($(this).find("td:eq(1)").text());
 					$("#last_name").val($(this).find("td:eq(2)").text());
@@ -62,44 +61,17 @@ function EmployeesController(opcion) {
 		});       			
 		break;
 	case "insert":
-		var json = 
-			{
-				'employee_id': $("#employee_id").val(),
-				'first_name': $("#first_name").val(),
-				'last_name': $("#last_name").val(),
-				'email': $("#email").val(),
-				'phone_number': $("#phone_number").val(),
-				'hire_date': $("#hire_date").val(),
-				'job_id': $("#job_id").val(),
-				'salary': ( $("#salary").val() ? $("#salary").val() : "0"),
-				'commission_pct': ( $("#commission_pct").val() ? $("#commission_pct").val() : "0"),
-				'manager_id': $("#manager_id").val(),
-				'department_id': $("#department_id").val()
-			};
-	
-	    var postData = JSON.stringify(json);
-
-	    $.ajax({
-			type : "post",
-			url : "/employees/insert",
-			data : postData,
-			contentType : "application/json; charset=utf-8",
-	        dataType : "json",
-			success : function(res) {
-				if (res == 1) {
-					$("#msg").removeClass("alert-danger").addClass("alert-success");
-					$("#msg").show();
-					$("#msg").html("Registro ingresado correctamente.");
-				} else {
-					$("#msg").show();
-					$("#msg").html("No se pudo ingresar el registro.");
-				}
-			},
-			error : function() {
-				$("#msg").show();
-				$("#msg").html("No se pudo ingresar el registro.");
-			}
-		});       	
+		$("#employee_id").val(0),
+		$("#first_name").val(""),
+		$("#last_name").val(""),
+		$("#email").val(""),
+		$("#phone_number").val(""),
+		$("#hire_date").val(new Date()),
+		$("#job_id").val(""),
+		$("#salary").val(0),
+		$("#commission_pct").val(0),
+		$("#manager_id").val(0),
+		$("#departent_id").val(0)	
 	    break;
 	case "update":
 		var json = 
@@ -113,11 +85,11 @@ function EmployeesController(opcion) {
 				'job_id': $("#job_id").val(),
 				'salary': ( $("#salary").val() ? $("#salary").val() : "0"),
 				'commission_pct': ( $("#commission_pct").val() ? $("#commission_pct").val() : "0"),
-				'manager_id': $("#manager_id").val()
+				'manager_id': $("#manager_id").val(),
+				'deparment_id': $("#departent_id").val()
 			};
-		;
 
-	    var postData = JSON.stringify(json);
+		var postData = JSON.stringify(json);
 
 		$.ajax({
 			type : "post",

@@ -37,8 +37,9 @@ public class JobsController {
 	
 	@RequestMapping(value="/delete")
 	public @ResponseBody int ajaxDelete(HttpServletRequest req, HttpServletResponse res) {
-		int rows = jobsService.delete(req.getParameter("job_id"));
-		return rows;
+		JobsDTO job = jobsService.get(req.getParameter("job_id"));
+		jobsService.delete(job);
+		return 0;
 	}
 	
 	@RequestMapping(value="/insert")
@@ -47,7 +48,10 @@ public class JobsController {
 		try {
 			String requestData = req.getReader().lines().collect(Collectors.joining());
 			JobsDTO job = new Gson().fromJson(requestData, JobsDTO.class);
-			rows = jobsService.insert(job);
+			job = jobsService.insert(job);
+			if (job != null) {
+				rows = 1;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,7 +65,10 @@ public class JobsController {
 		try {
 			String requestData = req.getReader().lines().collect(Collectors.joining());
 			JobsDTO job = new Gson().fromJson(requestData, JobsDTO.class);
-			rows = jobsService.update(job);
+			job = jobsService.insert(job);
+			if (job != null) {
+				rows = 1;
+			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
