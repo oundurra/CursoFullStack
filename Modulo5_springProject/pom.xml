@@ -58,11 +58,15 @@
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<scope>system</scope>
-			<systemPath>/home/user/Downloads/ojdbc8-19.3.0.0.jar</systemPath>
+			<systemPath>C:\Program Files\apache-tomcat-9.0.31\lib\ojdbc8-19.3.0.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 	</dependencies>
 

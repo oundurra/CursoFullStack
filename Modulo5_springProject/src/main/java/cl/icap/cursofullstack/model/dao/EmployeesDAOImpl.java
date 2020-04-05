@@ -98,9 +98,9 @@ public class EmployeesDAOImpl implements EmployeesDAO {
 	}
 
 	@Override
-	public int delete(String job_id) {
+	public int delete(String employee_id) {
 		int rows = 0;
-	    Object[] args = {job_id};
+	    Object[] args = {employee_id};
 	    try {
 			rows = jdbcTemplate.update(delete, args);	
 	    } catch (Exception e) {
