@@ -1,11 +1,13 @@
 function JobsController(opcion) {
 	$("#msg").hide();
 	$("#msg").removeClass("alert-success").addClass("alert-danger");
-
+	var token = $("meta[name='_csrf']").attr("content");
+	
 	switch(opcion){
 	case "listJob":
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/list",
 			success : function(res) {
 				result="<table name='jobsTable' id='jobsTable' class='table-striped'><thead>"
@@ -40,6 +42,7 @@ function JobsController(opcion) {
 	case "getJob":
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/get",
 			data : "job_id="+$("#job_id").val(),
 			success : function(res) {
@@ -72,6 +75,7 @@ function JobsController(opcion) {
 
 	    $.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/insert",
 			data : postData,
 			contentType : "application/json; charset=utf-8",
@@ -105,6 +109,7 @@ function JobsController(opcion) {
 
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/update",
 			data : postData,
 			contentType : "application/json; charset=utf-8",
@@ -128,6 +133,7 @@ function JobsController(opcion) {
 	case "deleteJob":
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/delete",
 			data : "job_id="+$("#job_id").val(),
 			success : function(res) {

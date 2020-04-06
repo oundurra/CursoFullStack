@@ -7,6 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WebAppController {
     @RequestMapping("/")
     public String getHome() {
+        return "home";
+    }
+   
+    @RequestMapping("/login")
+    public String getLogin() {
+        return "login";
+    }
+ 	
+    @RequestMapping("/index")
+    public String getIndex() {
         return "index";
     }
    

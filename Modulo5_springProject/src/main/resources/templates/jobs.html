@@ -3,6 +3,7 @@
 <head>
   	<title>Curso FullStack: Ejemplo Spring-Thymeleaf-Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <link href="/css/globalstyle.css" rel="stylesheet" th:href="@{/css/globalstyle.css}"/>

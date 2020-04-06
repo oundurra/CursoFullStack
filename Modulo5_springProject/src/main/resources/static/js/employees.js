@@ -1,11 +1,13 @@
 function EmployeesController(opcion) {
 	$("#msg").hide();
 	$("#msg").removeClass("alert-success").addClass("alert-danger");
-
+	var token = $("meta[name='_csrf']").attr("content");
+	
 	switch(opcion){
 	case "list":
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/employees/list",
 			success : function(res) {
 				$('#employeesTable').bootstrapTable('load', res);
@@ -34,6 +36,7 @@ function EmployeesController(opcion) {
 	case "get":
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/employees/get",
 			data : "employee_id="+$("#employee_id").val(),
 			success : function(res) {
@@ -93,6 +96,7 @@ function EmployeesController(opcion) {
 
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/employees/update",
 			data : postData,
 			contentType : "application/json; charset=utf-8",
@@ -116,6 +120,7 @@ function EmployeesController(opcion) {
 	case "delete":
 		$.ajax({
 			type : "post",
+		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/employees/delete",
 			data : "employee_id="+$("#employee_id").val(),
 			success : function(res) {

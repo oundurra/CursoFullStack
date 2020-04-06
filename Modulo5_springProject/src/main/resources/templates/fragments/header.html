@@ -25,12 +25,14 @@
   			</div>
   			<div class="collapse navbar-collapse" id="myNavbar">
 	  			<ul class="nav navbar-nav">
-	    			<li><a href="/">Inicio</a></li>
+	    			<li><a href="index">Inicio</a></li>
 	    			<li><a href="employees_page">Empleados</a></li>
 	    			<li><a href="jobs_page">Trabajos</a></li>
+	    			<li><a href="javascript:;" onclick="document.getElementById('logout').submit();">Cerrar Sesion</a></li>
 	  			</ul>
   			</div>
 		</nav>
+        <form th:action="@{/logout}" method="post" id="logout"></form>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
 	</div>

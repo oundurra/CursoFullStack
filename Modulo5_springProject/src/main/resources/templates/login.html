@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	<title>Curso FullStack: Ejemplo Spring-Thymeleaf-Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+ 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css}"/>    <style type="text/css">
+ 	   body {
+			background-color : DarkKhaki;
+		}
+    </style>
+</head>
+<body>
+	<div class="container">
+		<div class="panel panel-default" id="panel1">
+  			<div class="panel-body ">
+  		        <h3>Curso Fullstack Java Trainee</h3>
+  				<h4>Ejemplo: SpringBoot Application</h4>
+  				<h6><strong>Vista:</strong> Bootstrap - JQuery - Thymeleaf - JSON</h6>
+  				<h6><strong>Controlador:</strong> SpringBootServlet </h6>
+  				<h6><strong>Modelo:</strong> DTO - Hibernate JPA</h6>
+  				
+  				<div class="alert alert-danger" th:if="${param.error}">
+            		Error en nombre de usuario o password.
+        		</div>
+        		<div class="alert alert-info" th:if="${param.logout}">
+            		Sesión cerrada.
+        		</div>
+        		
+		        <form th:action="@{/login}" method="post">
+		            <div class="input-group">
+   						<span class="input-group-addon">Nombre Usuario</span>
+   						<input type="text" name="username" class="form-control"/> 
+		            </div>
+		            <div class="input-group">
+   						<span class="input-group-addon">Password</span>
+   						<input type="password" name="password" class="form-control"/> 
+		            </div>
+		            <div><input type="submit" class="btn btn-primary" value="Ingresar"/></div>
+		        </form>
+			</div>
+        </div>
+    </div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
