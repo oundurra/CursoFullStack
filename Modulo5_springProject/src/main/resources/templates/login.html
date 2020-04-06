@@ -18,8 +18,9 @@
   				<h4>Ejemplo: SpringBoot Application</h4>
   				<h6><strong>Vista:</strong> Bootstrap - JQuery - Thymeleaf - JSON</h6>
   				<h6><strong>Controlador:</strong> SpringBootServlet </h6>
-  				<h6><strong>Modelo:</strong> DTO - Hibernate JPA</h6>
-  				
+  				<h6><strong>Modelo:</strong> DTO - JPA</h6>
+  				<h6><strong>Seguridad:</strong> Spring Security</h6>
+  				  				
   				<div class="alert alert-danger" th:if="${param.error}">
             		Error en nombre de usuario o password.
         		</div>
@@ -36,6 +37,7 @@
    						<span class="input-group-addon">Password</span>
    						<input type="password" name="password" class="form-control"/> 
 		            </div>
+		            <br>
 		            <div><input type="submit" class="btn btn-primary" value="Ingresar"/></div>
 		        </form>
 			</div>
