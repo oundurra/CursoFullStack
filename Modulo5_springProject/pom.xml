@@ -63,7 +63,7 @@
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<scope>system</scope>
-			<systemPath>C:\Program Files\apache-tomcat-9.0.31\lib\ojdbc8-19.3.0.0.jar</systemPath>
+			<systemPath>/Users/oundurra/Downloads/ojdbc8-19.3.0.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
