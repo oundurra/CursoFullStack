@@ -11,7 +11,6 @@ function EmployeesController(opcion) {
 			url : "/employees/list",
 			success : function(res) {
 				$('#employeesTable').bootstrapTable('load', res);
-				
 				$('#employeesTable tbody').on('click', 'tr', function () {
 					$("#employee_id").val($(this).find("td:eq(0)").text());
 					$("#first_name").val($(this).find("td:eq(1)").text());
@@ -26,8 +25,6 @@ function EmployeesController(opcion) {
 					$("#department_id").val($(this).find("td:eq(10)").text());
 					$("#myModal .close").click();
 				});
-				
-				
 				$("#myModal").modal({show:true});
 			},
 			error : function() {

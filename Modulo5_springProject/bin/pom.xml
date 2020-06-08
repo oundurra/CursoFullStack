@@ -63,7 +63,7 @@
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<scope>system</scope>
-			<systemPath>/Users/oundurra/Downloads/ojdbc8-19.3.0.0.jar</systemPath>
+			<systemPath>C:\Program Files\apache-tomcat-9.0.31\lib\ojdbc8-19.3.0.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
@@ -77,10 +77,6 @@
 		  <groupId>org.springframework.security</groupId>
 		  <artifactId>spring-security-test</artifactId>
 		  <scope>test</scope>
-		</dependency>
-		<dependency>
-    		<groupId>org.thymeleaf.extras</groupId>
-    		<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>		
 	</dependencies>
 

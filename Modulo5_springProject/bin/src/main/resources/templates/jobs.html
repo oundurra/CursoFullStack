@@ -17,32 +17,13 @@
     		<div class="panel-body">
     			<h3>Mantención de trabajos</h3>
     			<p>
-    			
-    			<div sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_HRMAN')">
-    				<div class="btn-group">
+    			<div class="btn-group">
                 	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('listJob')">Listar</button>
                 	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('getJob')">Buscar</button>
             		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('insertJob')">Nuevo</button>
             		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('updateJob')">Grabar</button>
             		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('deleteJob')">Eliminar</button>
-             		</div>
              	</div>
-             	
-             	<div sec:authorize="hasRole('ROLE_HRAST')">
-    				<div class="btn-group">
-                	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('listJob')">Listar</button>
-                	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('getJob')">Buscar</button>
-            		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('insertJob')">Nuevo</button>
-             		</div>
-              	</div>
-             		            
-             	<div sec:authorize="hasRole('ROLE_HRVIE')">
-      				<div class="btn-group">
-                	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('listJob')">Listar</button>
-                	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:JobsController('getJob')">Buscar</button>
-             		</div>           	
-             	</div>
-             	
     			<p>
     			<div class="alert alert-danger" id="msg" hidden="true">
   				</div>
