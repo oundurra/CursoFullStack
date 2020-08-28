@@ -30,6 +30,12 @@ public class EmployeesController {
 		return list;
 	}
 	
+	@RequestMapping(value="/listbyjobid")
+	public @ResponseBody List<String> ajaxListByJobID(HttpServletRequest req, HttpServletResponse res) {
+		List<String> list = employeesService.findByJobID(req.getParameter("job_id"));
+		return list;
+	}
+	
 	@RequestMapping(value="/get")
 	public @ResponseBody EmployeesDTO ajaxGet(HttpServletRequest req, HttpServletResponse res) {
 		EmployeesDTO employee = employeesService.getOne(Integer.parseInt(req.getParameter("employee_id")));

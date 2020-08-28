@@ -1,13 +1,11 @@
 function JobsController(opcion) {
 	$("#msg").hide();
 	$("#msg").removeClass("alert-success").addClass("alert-danger");
-	var token = $("meta[name='_csrf']").attr("content");
-	
+
 	switch(opcion){
 	case "listJob":
 		$.ajax({
 			type : "post",
-		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/list",
 			success : function(res) {
 				result="<table name='jobsTable' id='jobsTable' class='table-striped'><thead>"
@@ -42,7 +40,6 @@ function JobsController(opcion) {
 	case "getJob":
 		$.ajax({
 			type : "post",
-		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/get",
 			data : "job_id="+$("#job_id").val(),
 			success : function(res) {
@@ -75,7 +72,6 @@ function JobsController(opcion) {
 
 	    $.ajax({
 			type : "post",
-		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/insert",
 			data : postData,
 			contentType : "application/json; charset=utf-8",
@@ -109,7 +105,6 @@ function JobsController(opcion) {
 
 		$.ajax({
 			type : "post",
-		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/update",
 			data : postData,
 			contentType : "application/json; charset=utf-8",
@@ -133,7 +128,6 @@ function JobsController(opcion) {
 	case "deleteJob":
 		$.ajax({
 			type : "post",
-		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
 			url : "/jobs/delete",
 			data : "job_id="+$("#job_id").val(),
 			success : function(res) {
@@ -156,51 +150,4 @@ function JobsController(opcion) {
 		$("#msg").show();
 		$("#msg").html("Opción incorrecta.");
 	}
-}
-
-function cargaJobs() {
-	//$("#jobs").append("<option>Job1</option>");
-	var token = $("meta[name='_csrf']").attr("content");
-	
-		$.ajax({
-			type : "post",
-		    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
-			url : "/jobs/list",
-			success : function(res) {
-
-				$.each(res, function(k,v) {
-					$("#jobs").append("<option>" + v.job_id + "</option>");
-					//result+="<td>"+v.job_title+"</td>";
-				});
-			},
-			error : function() {
-				$("#msg").show();
-				$("#msg").html("Error en carga de jobs.")
-			}
-		});       			
-}
-
-
-function cargaEmployees() {
-	//alert($("#jobs").val());
-	var token = $("meta[name='_csrf']").attr("content");
-	$("#employees").find("option").remove();
-		
-	$.ajax({
-		type : "post",
-	    headers: {"X-CSRF-TOKEN": token}, //send CSRF token in header
-		url : "/employees/listbyjobid",
-		data : "job_id="+$("#jobs").val(),
-		success : function(res) {	
-			console.log(res);
-			$.each(res, function(k,v) {
-				$("#employees").append("<option>" + v + "</option>");
-				console.log(v.first_name);
-			});
-		},
-		error : function() {
-			$("#msg").show();
-			$("#msg").html("Error en carga de employees.")
-		}
-	});   			
 }

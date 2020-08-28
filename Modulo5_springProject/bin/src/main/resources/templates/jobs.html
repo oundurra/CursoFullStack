@@ -3,13 +3,10 @@
 <head>
   	<title>Curso FullStack: Ejemplo Spring-Thymeleaf-Bootstrap</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
     <link href="/css/globalstyle.css" rel="stylesheet" th:href="@{/css/globalstyle.css}"/>
  	<script src="/js/jobs.js" th:href="@{/js/jobs.js}"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script> 	
   </head>
 
 <body>
@@ -50,24 +47,6 @@
 		</div>
     </div>
     
-    <div class="container">
-       <div class="panel panel-default" id="panel1">
-    		<div class="panel-body">
-       				<select name="jobs" id="jobs" onchange="cargaEmployees()">
-    				</select>
-    				
-    				<select name="employees" id="employees">
-    				</select>
-    		</div>
-    	</div>
-    </div>
-
-	<script>
-		cargaJobs();
-	</script>
-	
-
-    
     <!-- Modal -->
 	<div id="myModal" class="modal modal-sm" role="dialog">
   		<div class="modal-dialog">
@@ -91,7 +70,8 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
 </body>
 
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+ 	<title>Curso FullStack: Ejemplo Spring-Thymeleaf-Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="/css/globalstyle.css" rel="stylesheet" th:href="@{/css/globalstyle.css}"/>
+</head>
+<body>
+	<div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="container" style="background-color: skyblue; ">
+		<div class="panel panel-default" id="panel1">
+  			<div class="panel-body ">
+  		        <h3>Curso Fullstack Java Trainee</h3>
+  				<h4>Ejemplo: SpringBoot Application</h4>
+  				<h6><strong>Vista:</strong> Bootstrap - JQuery - Thymeleaf - JSON</h6>
+  				<h6><strong>Controlador:</strong> SpringBootServlet - Thymeleaf</h6>
+  				<h6><strong>Modelo:</strong> DAO/DTO - JdbcTemplate</h6>
+			</div>
+        </div>
+    </div>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+</body>
+</html>

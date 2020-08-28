@@ -29,4 +29,8 @@ public class EmployeesServiceImpl implements EmployeesService {
 	public EmployeesDTO save(EmployeesDTO employeesDTO) {
 		return employeesRepository.save(employeesDTO);
 	}
+	
+    public List<String> findByJobID(String job_id) {
+    	return employeesRepository.findByJobID(job_id);
+    };
 }

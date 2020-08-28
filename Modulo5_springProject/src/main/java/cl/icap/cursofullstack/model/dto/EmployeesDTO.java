@@ -6,6 +6,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="Employees")
+//@NamedQuery(name = "EmployeesDTO.findByJobID", query = "SELECT e.first_name FROM EmployeesDTO e WHERE e.job_id = ?1")
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class EmployeesDTO {

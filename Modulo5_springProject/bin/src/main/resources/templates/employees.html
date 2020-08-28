@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  	<title>Curso FullStack: Ejemplo Spring-Thymeleaf-Bootstrap</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+    <link href="/css/bootstrap-table.min.css" rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}"/>
+    <link href="/css/globalstyle.css" rel="stylesheet" th:href="@{/css/globalstyle.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="/js/employees.js" th:href="@{/js/employees.js}"></script>
+  </head>
+
+<body>
+    <div th:replace="fragments/header :: header">&nbsp;</div>
+	<div class="container">
+	    <div class="panel panel-default " id="panel1 ">
+	    	<div class="panel-body ">
+	   	    	<h3>Mantención de colaboradores</h3>
+	   			<p>
+	   			<div class="btn-group">
+	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:EmployeesController('list')">Listar</button>
+	               	<button type="button" class="btn btn-primary btn-sm" onclick="javascript:EmployeesController('get')">Buscar</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:EmployeesController('insert')">Nuevo</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:EmployeesController('update')">Grabar</button>
+	           		<button type="button" class="btn btn-primary btn-sm" onclick="javascript:EmployeesController('delete')">Eliminar</button>
+	            </div>
+	    		<p>
+	    	    <div class="alert alert-danger" id="msg" hidden="true">
+	  			</div>
+	        	<div class="input-group">
+	    			<span class="input-group-addon">Employee ID</span>
+	    			<input id="employee_id" type="text" class="form-control" name="employee_id">
+	  			</div>
+	  			<p>
+	  			<div class="input-group">
+	    			<span class="input-group-addon">First Name</span>
+	    			<input id="first_name" type="text" class="form-control" name="first_name" required>
+	  			</div>
+	   			<div class="input-group">
+	    			<span class="input-group-addon">Last Name</span>
+	    			<input id="last_name" type="text" class="form-control" name="last_name" required>
+	  			</div>
+	     			<div class="input-group">
+	    			<span class="input-group-addon">EMail</span>
+	    			<input id="email" type="text" class="form-control" name="email" required>
+	  			</div>
+	   			<div class="input-group">
+	    			<span class="input-group-addon">Phone Number</span>
+	    			<input id="phone_number" type="text" class="form-control" name="phone_number" required>
+	  			</div>
+	  		   	<div class="input-group">
+	    			<span class="input-group-addon">Hire Date</span>
+	    			<input id="hire_date" type="date" class="form-control" name="hire_date" required>
+	  			</div>
+	  			<div class="input-group">
+	    			<span class="input-group-addon">Job ID</span>
+	    			<input id="job_id" type="text" class="form-control" name="job_id" required>
+	  			</div>
+	  			<div class="input-group">
+	    			<span class="input-group-addon">Salary</span>
+	    			<input id="salary" type="number" class="form-control" name="salary" step="0.01" placeholder="0.00" min="0.00" required>
+	  			</div>
+	  			<div class="input-group">
+	    			<span class="input-group-addon">Commission PCT</span>
+	    			<input id="commission_pct" type="number" class="form-control" name="commission_pct" step="0.01" placeholder="0.00" min="0.00" required>
+	  			</div>
+	  			<div class="input-group">
+	    			<span class="input-group-addon">Manager ID</span>
+	    			<input id="manager_id" type="number" class="form-control" name="manager_id" required>
+	  			</div>
+	  		  	<div class="input-group">
+	    			<span class="input-group-addon">Department ID</span>
+	    			<input id="department_id" type="number" class="form-control" name="department_id" required>
+	  			</div>
+	  			<p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Modal -->
+	<div id="myModal" class="modal fade"  role="dialog">
+  		<div class="modal-dialog">
+    	<!-- Modal content-->
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal">Close</button>
+        		<h4 class="modal-title">Lista de Colaboradores</h4>
+      		</div>
+      		<div class="modal-body">
+      			<div class="table-responsive" style='height:100%' id='tableDivContainer'>
+      				<table class="table table-condensed" id='employeesTable' data-toggle="table" data-height="299">
+		        	<thead><tr>
+						<th data-field="employee_id">Employee ID</th>
+						<th data-field="first_name">First Name</th>
+						<th data-field="last_name">Last Name</th>
+						<th data-field="email">Email</th>
+						<th data-field="phone_number">Phone Number</th>
+						<th data-field="hire_date">Hire Date</th>
+						<th data-field="job_id">Job Id</th>
+						<th data-field="salary">Salary</th>
+						<th data-field="commission_pct">Commission PCT</th>
+						<th data-field="manager_id">Manager Id</th>
+						<th data-field="department_id">Department Id</th>
+					</tr>
+		        	</thead>
+		        	</table>
+		        </div>
+	      	</div>
+      		<div class="modal-footer">
+        		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      		</div>
+    	</div>
+		</div>
+	</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+<script src="/js/bootstrap-table.min.js" th:href="@{/js/bootstrap-table.min.js}"></script>
+
+</body>
+
+</html>
